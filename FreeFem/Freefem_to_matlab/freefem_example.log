@@ -1,0 +1,87 @@
+-- FreeFem++ v  3.610001 (date jeu. 12 juil. 2018 15:05:23)
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue
+    1 : verbosity=4;
+    2 : border a(t=0,1){x=t;y=0;label=1;};
+    3 : border b(t=0,0.5){x=1;y=t;label=1;};
+    4 : border c(t=0,0.5)'ffglut.exe' is not recognized as an internal or external command,
+operable program or batch file.
+{x=1-t;y=0.5;label=1;};
+    5 : border d(t=0.5,1){x=0.5;y=t;label=1;};
+    6 : border e(t=0.5,1){x=1-t;y=1;label=1;};
+    7 : border f(t=0,1){x=0;y=1-t;label=1;};
+    8 : func uu= sin(y*pi)/10; func vv= cos(x*pi)/10;
+    9 : int nn=2;
+   10 : mesh Th = buildmesh ( a(6*nn) + b(4*nn) + c(4*nn) +d(4*nn) + e(4*nn) + f(6*nn));
+   11 :
+   12 : //border C(t=0,2*pi){x=cos(t); y=sin(t);}
+   13 : //mesh Th = buildmesh (C(50));
+   14 : fespace Vh(Th,P1);
+   15 : Vh u,v;
+   16 : func so= 1.0;
+   17 : real cpu=clock();
+   18 : solve Poisson(u,v,solver=LU)=int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) - int2d(Th)( so*v)+on(a,b,c,d,e,f,u=0);
+   19 : plot(Th,u);
+   20 : savemesh(Th,"Gilgamesh.msh"); // freefem
+   21 :
+   22 : {
+   23 :         ofstream file("Heat.bb");
+   24 :         file << "2 1 1 "<< u[].n << " 2 \n";
+   25 :         for (int j=0;j<u[].n ; j++)
+   26 :                 file << u[][j] << endl;
+   27 : }
+   28 :
+   29 :
+   30 : cout << " CPU time = " << clock()-cpu << endl;
+   31 :  sizestack + 1024 =2124  ( 1100 )
+ 
+                  Begin: ConstGeometry from nb Border  6
+                     Geom: min=[0,0]max =[1,1] hmin = 1.86265e-009
+ Nb of common points 6
+                     Geom Hmin 0.0625
+    End ReadGeometry: Number of curves in geometry is 6
+  -- Insert initial 56 vertices
+  -- Begin of insertion process
+    NbSwap of insertion 126 NbSwap/Nbv 2.25 NbUnSwap 318 Nb UnSwap/Nbv 5.67857
+  -- ForceBoundary  nb of edge 56
+     Nb of inforced edge = 0 Nb of Swap 0
+  -- Find all internal sub-domain  Nb of Sub borned Domain  = 1 NbOutTriangles = 56
+  -- Triangles::NewPoints  nbv (in)  on Boundary  = 56
+    Nb Of New Point 157 Nb Of To close Points 102 Nb swap = 374 after  NbSwap = 374
+    Nb Of New Point 185 Nb Of To close Points 29 Nb swap = 89 after  NbSwap = 89
+    Nb Of New Point 192 Nb Of To close Points 6 Nb swap = 18 after  NbSwap = 18
+    Nb Of Vertices =192 Nb of triangles = 326 NbSwap final = 0 Nb Total Of Swap = 481
+  --  mesh:  Nb of Triangles =    326, Nb of Vertices 192
+    Nb of Vertices 192 ,  Nb of Triangles 326
+    Nb of edge on user boundary  56 ,  Nb of edges on true boundary  56
+ number of real boundary edges 56
+  -- Mesh: Gibbs: old skyline = 9597  new skyline = 2139
+  FESpace: Nb Of Nodes = 192 Nb of DF = 192
+ 
+   -- Change of Mesh 0  0x6b11030
+   Problem(): initmat 1 VF (discontinuous Galerkin) = 0
+  -- SizeOfSkyline =1947
+   -- size of Matrix 864 Bytes skyline =1
+  -- discontinous Galerkin  =0 size of Mat =864 Bytes
+  --  int    (nQP: 7 ) in  Optimized = 1,    -- nb term in bilinear form  (!0) : 2  total 2
+ all
+  -- AssembleLinearForm 2, discontinous Galerkin  =0 binside = 0 levelset integration 0 withmap: 0
+  --  int 2d  (nQP: 7 ) in , samemesh :1 int mortar: 1 Optimized = 1,  all
+  -- LU
+  -- Solve :
+          min 5.21904e-063  max 0.0365593
+Plot bound [x,y] 0 0 max [x,y] 1 1
+  number of required edges : 0
+  -- construction of the geometry from the 2d mesh
+   The Number of sub domain = 1
+    Nb of  vertices  = 56 Nb of edges = 56
+    End ReadGeometry: Number of curves in geometry is 6
+  -- FillHoleInMesh: Nb of vertices =192 Pmin = [-0.05,-0.05] Pmax = [1.05,1.05]
+  -- Find all external sub-domain  Nb of Sub borned Domain  = 1 NbOutTriangles = 56
+  -- Find all internal sub-domain  Nb of Sub borned Domain  = 1 NbOutTriangles = 56
+  -- Writing the file Gilgamesh.msh of type  msh  NbOfTria = 326 NbOfRefEdge = 56
+ CPU time = 0.022
+times: compile 0.039s, execution 0.034s,  mpirank:0
+ ######## We forget of deleting   434 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  3013,  size :386064 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\thabuis\Downloads\FreeFEM\Freefem_to_matlab\freefem_example.edp

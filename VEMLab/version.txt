@@ -1,0 +1,99 @@
+------------------------------------------------------------------------------
+                                    VEMLab
+                Source code  : http://camlab.cl/software/vemlab
+              (See Copyright and License notice in "license.txt")
+
+                              Copyright (c) 2018                     
+                         by Alejandro Ortiz-Bernardin 
+                               aortizb@uchile.cl
+				                 http://camlab.cl/alejandro/
+							   
+                    Department of Mechanical Engineering                        
+                   Universidad de Chile,  Santiago, CHILE                        
+						 
+               Computational and Applied Mechanics Laboratory,
+                Center for Modern Computational Engineering,
+                 Facultad de Ciencias Físicas y Matemáticas,
+                   Universidad de Chile, Santiago, CHILE
+                            All Rights Reserved.
+							 
+------------------------------------------------------------------------------
+Version 2.2.1 (20-OCT-2018):
+
+- Add option to explicitly switch off all MATLAB figures in function
+  "plot_and_output_options.m".
+- Facilitate compatibility to run VEMLab in Octave.
+- Update manual with a guide to running VEMLab in Octave.
+
+Version 2.2 (6-OCT-2018):
+
+- Fix disp() in plot_and_ouput_options.m: disp("Hello") seems to work only in newer 
+  versions of MATLAB. So, it is changed to the standard MATLAB format disp('Hello').
+- Results that are postprocessed in the graphical user interface of GiD are now 
+  ordered in folders.
+- Add option to plot deformed domain in MATLAB figures when using the 
+  LinearElastostatics module (see function “plot_and_ouput_options.m” located in 
+  the folder “config”).
+- Add a function to read a meshfile having the domain type declared as "Custom", 
+  which is useful for defining the meshfile manually or using an external mesh 
+  generator or using a customized version of the mesh generators available in 
+  VEMLab. (See example "Creating and using a custom meshfile" in the VEMLab Primer 
+  for details).
+- Add more details to the VEMLab Primer.
+  
+Version 2.1 (17-MAY-2018):
+
+- Add customized wrench domain (for PolyMesher mesh generator only).
+- Add customized plate with a hole domain (for PolyMesher mesh generator only).
+- Add the following test: "square_plate_with_source2_poisson2d.m" in test folder.
+- Add the following test: "plate_with_hole_linelast2d.m" in test folder.
+- Add the following test: "wrench_linelast2d.m" in test folder.
+- Fix iteration counter in PolyMesher function.
+
+Version 2.0.2 (13-MAY-2018):
+
+- Fix several bugs when using vemlab_method='FEM2DQ4' and vemlab_method='FEM2DT3'.
+- Add a control variable in config.m that permits to explicitly set the number of 
+  Gauss points to integrate the FEM2DQ4 stiffness matrix and body force vector.
+
+Version 2.0.1 (26-APR-2018). The following features have been added:
+
+- More detailed manual in folder "doc."
+- Improvement to the plotting of axis and fonts in MATLAB figures.
+
+Version 2.0 (9-APR-2018). The following features have been added:
+
+- Two-dimensional Poisson problem.
+- Setup of plot and output options in function "plot_and_output_options" located 
+  in folder "config". 
+- Additional plotting options (stresses, strains, fluxes and gradients) to MATLAB 
+  figures, text files and GiD files.
+- Option to plot solutions to VTK files.
+
+Version 1.0 (17-FEB-2018). (Initial realease of code)
+
+- Two-dimensional linear elastostatics (plane strain and plane stress)
+- Solution methods: linear VEM (polygonal elements), FEM (3-node triangles, 4-node 
+  quadrilateral)
+- Boundary conditions: Dirichlet, Neumann on boundary edges; can be a constant or 
+  a function.
+- Meshers: PolyMesher [1], distmesh2d [2], quad4mesh; customized for rectangular 
+  domains only (requires adjustments for other domain types)
+- Meshes need to be generated separately and stored inside folder 'mesh_files' 
+  located in folder 'test.' 
+- Meshes must be generated with the functions 'create_' located in folder 'mesher.'
+- Solutions can be plotted to MATLAB figures, text files and GiD files.
+
+-------------------------------------------------------------------------------
+References:
+
+[1] C Talischi, GH Paulino, A Pereira, IFM Menezes, 
+    "PolyMesher: A general-purpose mesh generator for polygonal elements 
+    written in Matlab", 
+	  Struct Multidisc Optim, 2012,
+    DOI 10.1007/s00158-011-0706-z 
+
+[2] Per-Olof Persson and Gilbert Strang, 
+    "A Simple Mesh Generator in MATLAB," 
+	  SIAM Review Vol. 46 (2) 2004. 
+	
