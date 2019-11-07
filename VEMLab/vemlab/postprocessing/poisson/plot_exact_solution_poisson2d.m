@@ -276,7 +276,7 @@ function plot_flux_and_gradient_poisson2d(domainMesh,flux,grad,gp_list,...
   if strcmp(config.poisson2d_plot_flux.qnorm,'yes')  
     vq=griddata(gp_list.x(:),gp_list.y(:),fluxNorm,xq,yq);
     figure
-    mesh(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');
+    patch(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');%%%%%%%%%%%%%%%%%%%%%% was written mesh before instead of patch
     mytitle='$||q||$';
     title(mytitle,'FontWeight','bold','FontSize',20,'FontName',...
           'Times New Roman','Interpreter','latex');   
@@ -305,7 +305,7 @@ function plot_flux_and_gradient_poisson2d(domainMesh,flux,grad,gp_list,...
   if strcmp(config.poisson2d_plot_grad.dx,'yes')  
     vq=griddata(gp_list.x(:),gp_list.y(:),grad.dx(:),xq,yq);
     figure
-    mesh(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');
+    patch(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');%%%%%%%%%%%%%%%%%%%%%% was written mesh before instead of patch
     mytitle='$\frac{\partial u}{\partial x}$';
     title(mytitle,'FontWeight','bold','FontSize',20,'FontName',...
           'Times New Roman','Interpreter','latex');   
@@ -334,7 +334,7 @@ function plot_flux_and_gradient_poisson2d(domainMesh,flux,grad,gp_list,...
   if strcmp(config.poisson2d_plot_grad.dy,'yes')  
     vq=griddata(gp_list.x(:),gp_list.y(:),grad.dy(:),xq,yq);
     figure
-    mesh(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');
+    patch(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');%%%%%%%%%%%%%%%%%%%%%% was written mesh before instead of patch
     mytitle='$\frac{\partial u}{\partial y}$';
     title(mytitle,'FontWeight','bold','FontSize',20,'FontName',...
           'Times New Roman','Interpreter','latex');    
@@ -363,7 +363,7 @@ function plot_flux_and_gradient_poisson2d(domainMesh,flux,grad,gp_list,...
   if strcmp(config.poisson2d_plot_grad.dnorm,'yes')    
     vq=griddata(gp_list.x(:),gp_list.y(:),gradNorm,xq,yq);
     figure
-    mesh(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');
+    patch(xq,yq,vq,'FaceColor','interp','EdgeColor','interp');%%%%%%%%%%%%%%%%%%%%%% was written mesh before instead of patch
     mytitle='$||\nabla u||$';
     title(mytitle,'FontWeight','bold','FontSize',20,'FontName',...
           'Times New Roman','Interpreter','latex');   

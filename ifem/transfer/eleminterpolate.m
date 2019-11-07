@@ -16,7 +16,7 @@ function newp = eleminterpolate(p,tree,weight)
 %   [node,elem] = squaremesh([0 1 0 1],1/2);
 %   p = 1:size(elem,1); 
 %   figure(1);
-%   subplot(1,4,1); showsolution(node,elem,p,'EdgeColor','k'); view(2);
+%   subplot(1,4,1); show solution(node,elem,p,'EdgeColor','k'); view(2);
 %   [node,elem,~,~,tree] = bisect(node,elem,[1 2]);
 %   p = eleminterpolate(p,tree);
 %   subplot(1,4,2); showsolution(node,elem,p,'EdgeColor','k'); view(2);
